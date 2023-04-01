@@ -22,33 +22,39 @@ const Form4 = () => {
     const { name, value } = e.target;
 
     setForm({ ...FormData, [name]: value });
-  
   };
-  console.log(form)
+  console.log(form);
   return (
     <Container className="m-5">
-      <FormGroup>
+      <Form>
+        
+        <FormGroup className="mb-3">
+          <Form.Control
+            name="firstName"
+            type="text"
+            placeholder="Adiniz?"
+            onChange={(e) => update(e)}
+          ></Form.Control>
+        </FormGroup>
+
+        <FormGroup  className="mb-3">
+          <Form.Control
+            name="lastName"
+            type="text"
+            placeholder="Soyad?"
+            onChange={(e) => update(e)}
+          ></Form.Control>
+        </FormGroup >
+
+        <FormGroup className="mb-3">
         <Form.Control
-          name="firstName"
-          type="text"
-          placeholder="Adiniz?"
+          name="email"
+          type="email"
+          placeholder="Email?"
           onChange={(e) => update(e)}
         ></Form.Control>
-      </FormGroup>
-      <FormGroup>
-        <Form.Control
-          name="lastName"
-          type="text"
-          placeholder="Soyad?"
-          onChange={(e) => update(e)}
-        ></Form.Control>
-      </FormGroup>
-      <Form.Control
-        name="email"
-        type="email"
-        placeholder="Email?"
-        onChange={(e) => update(e)}
-      ></Form.Control>
+        </FormGroup>
+      </Form>
     </Container>
   );
 };

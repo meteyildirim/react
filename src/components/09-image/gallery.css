@@ -1,0 +1,11 @@
+.gallery {
+  display: flex;
+  gap: 1rem;
+}
+.gallery > div {
+  flex: 1 1 300px;
+}
+.gallery img {
+  width: 100%;
+  height: auto;
+}/*# sourceMappingURL=gallery.css.map */

@@ -50,6 +50,7 @@ import { useEffect, useState } from "react";
 import Exchange from "./components/27-context-api/exchange";
 import axios from "axios";
 
+
 // <MemoryRouter> </MemoryRouter> application bunlarin arasina alinirsa browserda end pointler gozukmeyecektir.
 const App = () => {
   const [counter, setcounter] = useState(10);
@@ -139,6 +140,7 @@ const App = () => {
       */}
       </BrowserRouter>
     </StoreContext.Provider>
+
   );
 };
 

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap";
+import StoreContext from "../../store";
 
 // context.js, exchange.js, topbar.js olusturuldu
 // src altinda store folder ve icine index.js yapildi
@@ -17,10 +19,45 @@ import React from 'react'
 // useEffect icersinde bu ilemi koyduk ki ilk giriste datayi alsin
 // currencies state ni tum uygulamalara ac
 //chrome inspectden react context eklentisi ile merkezi context gorebilirsin
-const Context = () => {
-  return (
-    <div>Context</div>
-  )
-}
 
-export default Context
+// input element aldik from https://react-bootstrap.netlify.app/forms/input-group/#rb-docs-content ve context yerlestirdik
+// from select yapistir --bootstrap
+
+// ilk basta null degeri dondurmesi 
+const Context = () => {
+
+  const [curency, setcurency] = useState("EUR")
+  const [amount, setamount] = useState(0)
+
+  const [result, setresult] = useState()
+
+  const store = useContext(StoreContext);
+  const {currencies} =store;
+
+//console.log("currencies[curency]", amount /currencies[curency])
+
+  useEffect(() => {
+  
+  const rslt = (amount / (currencies[curency])).toFixed(3)
+  //console.log(rslt)
+  setresult(rslt)
+
+  }, [amount,curency])
+  
+  return (
+    <div>
+    
+      <InputGroup className="mb-3">
+  
+        <Form.Control value={amount} onChange={(e)=>setamount(e.target.value)} />
+        <Form.Select aria-label="Select currency" value={curency} onChange={(e)=>setcurency(e.target.value)}>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </Form.Select>
+        <InputGroup.Text id="basic-addon1">{isNaN(result) ?"":result}</InputGroup.Text>
+      </InputGroup>
+    </div>
+  );
+};
+
+export default Context;
